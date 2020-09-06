@@ -10,24 +10,24 @@ function kocf_show_signup_form_code($atts) { ?>
 	<form name="kocf-sign-up-form" id="kocf-sign-up-form">
     <div class="kocf-col-wrapper">
       <label for="kocf-sp-email-address">Email address<sup class="kocf-required">*</sup></label>
-	    <input type="email" name="kocfSpEmailAddress" required />
+	    <input type="email" name="kocfSpEmailAddress" class="kocf-input-box" required />
 			<span id="kocf-sp-email-address-error" class="kocf-error-span"></span>
     </div>
     <div class="kocf-col-wrapper">
       <label for="kocf-sp-catan-universe-name">What is your Catan Universe name?</label>
-      <input type="text" name="kocfSpCatanUniverseName" />
+      <input type="text" name="kocfSpCatanUniverseName" class="kocf-input-box" />
     </div>
     <div class="kocf-col-wrapper">
       <label for="kocf-sp-colonist-name">What is your Colonist name?</label>
-      <input type="text" name="kocfSpColonistName" />
+      <input type="text" name="kocfSpColonistName" class="kocf-input-box" />
     </div>
     <div class="kocf-col-wrapper">
       <label for="kocf-sp-catan-vr-name">What is your name on CatanVR?</label>
-      <input type="text" name="kocfSpCatanVrName" />
+      <input type="text" name="kocfSpCatanVrName" class="kocf-input-box" />
     </div>
     <div class="kocf-col-wrapper">
       <label for="kocf-sp-discord-name">What is your name on Discord?<sup class="kocf-required">*</sup></label>
-      <input type="text" name="kocfSpDiscordName" required />
+      <input type="text" name="kocfSpDiscordName" class="kocf-input-box" required />
 			<span id="kocf-sp-discord-name-error" class="kocf-error-span"></span>
     </div>
     <div class="kocf-col-wrapper">
@@ -75,7 +75,7 @@ function kocf_show_signup_form_code($atts) { ?>
     </div>
     <div class="kocf-col-wrapper">
       <label for="kocfSpTimeZone">What time-zone do you live in?<sup class="kocf-required">*</sup></label>
-      <select name="kocfSpTimeZone" required>
+      <select name="kocfSpTimeZone" class="kocf-select-box" required>
         <option value="">Select a time zone</option>
       	<option timeZoneId="1" gmtAdjustment="GMT-12:00" useDaylightTime="0" value="-12">(GMT-12:00) International Date Line West</option>
       	<option timeZoneId="2" gmtAdjustment="GMT-11:00" useDaylightTime="0" value="-11">(GMT-11:00) Midway Island, Samoa</option>

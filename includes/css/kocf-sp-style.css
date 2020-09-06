@@ -8,6 +8,20 @@
   max-width: 360px;
 }
 
+input[type="text"].kocf-input-box, input[type="email"].kocf-input-box, select.kocf-select-box {
+  background: #fff;
+  border: solid 1px #ccc;
+  box-sizing: border-box;
+  outline: none;
+  padding: 0.36rem 0.66rem;
+  outline-offset: 0;
+  border-radius: 0;
+}
+
+input[type="text"].kocf-input-box, input[type="email"].kocf-input-box {
+  -webkit-appearance: none;
+  -webkit-backface-visibility: hidden;
+}
 .kocf-required {
   color: red;
 }

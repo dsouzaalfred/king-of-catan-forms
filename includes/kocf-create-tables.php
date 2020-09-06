@@ -39,19 +39,19 @@ function kocf_create_tables() {
 
 	$sql = "CREATE TABLE $results_table_name (
 		result_id smallint(9) NOT NULL AUTO_INCREMENT,
-    winner_email_id varchar(90) NOT NULL,
-		player_two_email_id varchar(90) NOT NULL,
-		player_three_email_id varchar(90) NULL,
-		player_four_email_id varchar(90) NULL,
+    winner_user_id smallint(9) NOT NULL,
+		player_two_user_id smallint(9) NOT NULL,
+		player_three_user_id smallint(9) NULL,
+		player_four_user_id smallint(9) NULL,
 		other_players varchar(400) NULL,
     is_crown_game varchar(20) NOT NULL,
     game_mode varchar(40) NOT NULL,
     game_scenario varchar(60) NOT NULL,
     PRIMARY KEY  (result_id),
-    FOREIGN KEY  (winner_email_id) REFERENCES $signup_table_name(user_email_id),
-		FOREIGN KEY  (player_two_email_id) REFERENCES $signup_table_name(user_email_id),
-		FOREIGN KEY  (player_three_email_id) REFERENCES $signup_table_name(user_email_id),
-		FOREIGN KEY  (player_four_email_id) REFERENCES $signup_table_name(user_email_id)
+    FOREIGN KEY  (winner_user_id) REFERENCES $signup_table_name(user_id),
+		FOREIGN KEY  (player_two_user_id) REFERENCES $signup_table_name(user_id),
+		FOREIGN KEY  (player_three_user_id) REFERENCES $signup_table_name(user_id),
+		FOREIGN KEY  (player_four_user_id) REFERENCES $signup_table_name(user_id)
 	) $charset_collate;";
 
 	dbDelta( $sql );

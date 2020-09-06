@@ -7,6 +7,8 @@ if ( ! defined( 'WPINC' ) ) {
 
 // get signup form
 include( plugin_dir_path( __FILE__ ) . '/kocf-signup-form.php');
+// get results form
+include( plugin_dir_path( __FILE__ ) . '/kocf-results-form.php');
 // get kocf_ajax
 include( plugin_dir_path( __FILE__ ) . '/kocf_ajax.php');
 
@@ -22,6 +24,7 @@ add_action( 'wp_enqueue_scripts', 'kocf_styles' );
 
 // add a short code
 add_shortcode('kocf-show-singup-form', 'kocf_show_signup_form_code');
+add_shortcode('kocf-show-results-form', 'kocf_show_results_form_code');
 
 // function that will handle ajax call
 add_action( 'wp_ajax_nopriv_kocf_handle_ajax', 'kocf_handle_ajax' );
