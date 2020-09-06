@@ -16,6 +16,9 @@ if ( ! defined( 'WPINC' ) ) {
 if (!defined('KOCF_SIGNUP_TABLE' ))
     define('KOCF_SIGNUP_TABLE', 'kocf_signup');
 
+if (!defined('KOCF_RESULTS_TABLE' ))
+    define('KOCF_RESULTS_TABLE', 'kocf_results');
+
 if (!defined('KOCF_VERSION_NUM'))
     define('KOCF_VERSION_NUM', '1.0.0');
 

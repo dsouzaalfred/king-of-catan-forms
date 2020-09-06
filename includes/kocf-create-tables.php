@@ -35,7 +35,26 @@ function kocf_create_tables() {
 	dbDelta( $sql );
 
 	// Results table creation
-	$signup_table_name = $wpdb->prefix . KOCF_SIGNUP_TABLE;
+	$results_table_name = $wpdb->prefix . KOCF_RESULTS_TABLE;
+
+	$sql = "CREATE TABLE $results_table_name (
+		result_id smallint(9) NOT NULL AUTO_INCREMENT,
+    winner_email_id varchar(90) NOT NULL,
+		player_two_email_id varchar(90) NOT NULL,
+		player_three_email_id varchar(90) NULL,
+		player_four_email_id varchar(90) NULL,
+		other_players varchar(400) NULL,
+    is_crown_game varchar(20) NOT NULL,
+    game_mode varchar(40) NOT NULL,
+    game_scenario varchar(60) NOT NULL,
+    PRIMARY KEY  (result_id),
+    FOREIGN KEY  (winner_email_id) REFERENCES $signup_table_name(user_email_id),
+		FOREIGN KEY  (player_two_email_id) REFERENCES $signup_table_name(user_email_id),
+		FOREIGN KEY  (player_three_email_id) REFERENCES $signup_table_name(user_email_id),
+		FOREIGN KEY  (player_four_email_id) REFERENCES $signup_table_name(user_email_id)
+	) $charset_collate;";
+
+	dbDelta( $sql );
 
   add_option( 'KOCF_VERSION_NUM', KOCF_VERSION_NUM );
 }
