@@ -1,0 +1,44 @@
+.kocf-col-wrapper {
+  display: flex;
+  flex-flow: column;
+  margin-bottom: 20px;
+}
+
+#koc-sp-form-submit {
+  max-width: 360px;
+}
+
+.kocf-required {
+  color: red;
+}
+
+.kocf-checkbox-label-wrapper, .kocf-radio-label-wrapper {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.kocf-checkbox, .kocf-radio {
+  height: 30px;
+  width: 30px;
+  margin: 10px 10px 10px 0 !important;
+}
+
+.kocf-error-span {
+  display: none;
+}
+.kocf-show-error {
+  display: flex;
+  color: red;
+}
+.kocf-sp-show-error-wrapper {
+  display: flex;
+}
+
+#kocf-sp-success {
+  display: none;
+}
+
+#kocf-sp-success h2 {
+  color: green;
+}
