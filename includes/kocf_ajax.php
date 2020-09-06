@@ -49,10 +49,39 @@ function kocf_handle_ajax() {
         }
         wp_send_json_error('Error submitting the form, pleasea try again');
       } else {
+				// send mail here
         $signup_success = array('message' => "Sign up successful");
         wp_send_json_success( __( $signup_success, 'kocfSignup' ) );
       }
     }
+
+		if ( $form_type == 'results' ) {
+			// get data from post request
+      $data = $_POST;
+      $signup_data = $data['results_data'];
+
+			$results_table_name = $wpdb->prefix . KOCF_RESULTS_TABLE;
+
+			$add_results_record = $wpdb->insert($results_table_name, array(
+         "winner_user_id" => $signup_data['kocfRsWinner'],
+         "player_two_user_id" => $signup_data['kocfRsPlayer2'],
+         "player_three_user_id" => $signup_data['kocfRsPlayer3'],
+         "player_four_user_id" => $signup_data['kocfRsPlayer4'],
+         "other_players" => $signup_data['kocfRsOtherPlayers'],
+         "is_crown_game" => $signup_data['kocfRsGameForCrown'],
+         "game_mode" => $signup_data['kocfRsGameMode'] ,
+         "game_scenario" => $signup_data['kocfRsGameScenario'] ,
+         "time_stamp" => current_time( 'mysql' ), // insert current timestamp
+      ));
+
+			if($add_results_record === false) {
+        wp_send_json_error('Error submitting the form, pleasea try again');
+      } else {
+				// send mail here
+        $result_success = array('message' => "Results submitted.");
+        wp_send_json_success( __( $result_success, 'kocfResults' ) );
+      }
+		}
     wp_send_json_error();
   }
 

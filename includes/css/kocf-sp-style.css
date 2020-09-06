@@ -4,10 +4,10 @@
   margin-bottom: 20px;
 }
 
-#koc-sp-form-submit {
-  max-width: 360px;
+label.kocf-labels {
+  font-size: 1em;
+  line-height: 1.8;
 }
-
 input[type="text"].kocf-input-box, input[type="email"].kocf-input-box, select.kocf-select-box {
   background: #fff;
   border: solid 1px #ccc;
@@ -16,14 +16,12 @@ input[type="text"].kocf-input-box, input[type="email"].kocf-input-box, select.ko
   padding: 0.36rem 0.66rem;
   outline-offset: 0;
   border-radius: 0;
+  font-size: 1em;
+  line-height: 1.8;
 }
-
 input[type="text"].kocf-input-box, input[type="email"].kocf-input-box {
   -webkit-appearance: none;
   -webkit-backface-visibility: hidden;
-}
-.kocf-required {
-  color: red;
 }
 
 .kocf-checkbox-label-wrapper, .kocf-radio-label-wrapper {
@@ -31,6 +29,8 @@ input[type="text"].kocf-input-box, input[type="email"].kocf-input-box {
   flex-flow: row;
   justify-content: flex-start;
   align-items: center;
+  font-size: 1em;
+  line-height: 1.8;
 }
 .kocf-checkbox, .kocf-radio {
   height: 30px;
@@ -38,21 +38,46 @@ input[type="text"].kocf-input-box, input[type="email"].kocf-input-box {
   margin: 10px 10px 10px 0 !important;
 }
 
+.kocf-buttons {
+  width: 200px
+}
+
+.kocf-required {
+  color: red;
+}
+
+.kocf-note {
+  margin: 0;
+  font-size: 0.8em;
+  line-height: 1;
+}
+
+#koc-sp-form-submit {
+  font-size: 1em;
+  line-height: 1.8;
+}
 .kocf-error-span {
   display: none;
 }
 .kocf-show-error {
   display: flex;
   color: red;
+  font-size: 0.8em;
+  line-height: 1;
+  margin-top: 5px;
 }
-.kocf-sp-show-error-wrapper {
+.kocf-show-error-wrapper {
   display: flex;
 }
 
-#kocf-sp-success {
+.kocf-show-error-wrapper > span {
+  margin-bottom: 10px;
+}
+
+#kocf-sp-success, #kocf-rs-success {
   display: none;
 }
 
-#kocf-sp-success h2 {
+#kocf-sp-success h2, #kocf-rs-success h2 {
   color: green;
 }

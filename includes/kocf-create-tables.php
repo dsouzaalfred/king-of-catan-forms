@@ -47,6 +47,7 @@ function kocf_create_tables() {
     is_crown_game varchar(20) NOT NULL,
     game_mode varchar(40) NOT NULL,
     game_scenario varchar(60) NOT NULL,
+		time_stamp datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
     PRIMARY KEY  (result_id),
     FOREIGN KEY  (winner_user_id) REFERENCES $signup_table_name(user_id),
 		FOREIGN KEY  (player_two_user_id) REFERENCES $signup_table_name(user_id),

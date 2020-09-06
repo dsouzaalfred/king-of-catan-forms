@@ -9,29 +9,29 @@ if ( ! defined( 'WPINC' ) ) {
 function kocf_show_signup_form_code($atts) { ?>
 	<form name="kocf-sign-up-form" id="kocf-sign-up-form">
     <div class="kocf-col-wrapper">
-      <label for="kocf-sp-email-address">Email address<sup class="kocf-required">*</sup></label>
+      <label class="kocf-labels" for="kocf-sp-email-address">Email address<sup class="kocf-required">*</sup></label>
 	    <input type="email" name="kocfSpEmailAddress" class="kocf-input-box" required />
 			<span id="kocf-sp-email-address-error" class="kocf-error-span"></span>
     </div>
     <div class="kocf-col-wrapper">
-      <label for="kocf-sp-catan-universe-name">What is your Catan Universe name?</label>
+      <label class="kocf-labels" for="kocf-sp-catan-universe-name">What is your Catan Universe name?</label>
       <input type="text" name="kocfSpCatanUniverseName" class="kocf-input-box" />
     </div>
     <div class="kocf-col-wrapper">
-      <label for="kocf-sp-colonist-name">What is your Colonist name?</label>
+      <label class="kocf-labels" for="kocf-sp-colonist-name">What is your Colonist name?</label>
       <input type="text" name="kocfSpColonistName" class="kocf-input-box" />
     </div>
     <div class="kocf-col-wrapper">
-      <label for="kocf-sp-catan-vr-name">What is your name on CatanVR?</label>
+      <label class="kocf-labels" for="kocf-sp-catan-vr-name">What is your name on CatanVR?</label>
       <input type="text" name="kocfSpCatanVrName" class="kocf-input-box" />
     </div>
     <div class="kocf-col-wrapper">
-      <label for="kocf-sp-discord-name">What is your name on Discord?<sup class="kocf-required">*</sup></label>
+      <label class="kocf-labels" for="kocf-sp-discord-name">What is your name on Discord?<sup class="kocf-required">*</sup></label>
       <input type="text" name="kocfSpDiscordName" class="kocf-input-box" required />
 			<span id="kocf-sp-discord-name-error" class="kocf-error-span"></span>
     </div>
     <div class="kocf-col-wrapper">
-      <label>Which Game Modes do you have?<sup class="kocf-required">*</sup></label>
+      <label class="kocf-labels">Which Game Modes do you have?<sup class="kocf-required">*</sup></label>
       <label class="kocf-checkbox-label-wrapper">
         <input type="checkbox" name="kocfSpGameMode" class="kocf-checkbox" value="Base Game"> Base Game
       </label>
@@ -62,7 +62,7 @@ function kocf_show_signup_form_code($atts) { ?>
 			<span id="kocf-sp-game-mode-error" class="kocf-error-span"></span>
     </div>
     <div class="kocf-col-wrapper">
-      <label>What Discord-server would you like to play on?<sup class="kocf-required">*</sup></label>
+      <label class="kocf-labels">What Discord-server would you like to play on?<sup class="kocf-required">*</sup></label>
       <label class="kocf-radio-label-wrapper">
         <input type="radio" class="kocf-radio" name="kocfSpDiscordServer" value="King of Catan (Catan Universe & Colonist.io)"> King of Catan (Catan Universe & Colonist.io)
       </label>
@@ -72,9 +72,10 @@ function kocf_show_signup_form_code($atts) { ?>
       <label class="kocf-radio-label-wrapper">
         <input type="radio" class="kocf-radio" name="kocfSpDiscordServer" value="Both"> Both
       </label>
+			<span id="kocf-sp-discord-server-error" class="kocf-error-span"></span>
     </div>
     <div class="kocf-col-wrapper">
-      <label for="kocfSpTimeZone">What time-zone do you live in?<sup class="kocf-required">*</sup></label>
+      <label class="kocf-labels" for="kocfSpTimeZone">What time-zone do you live in?<sup class="kocf-required">*</sup></label>
       <select name="kocfSpTimeZone" class="kocf-select-box" required>
         <option value="">Select a time zone</option>
       	<option timeZoneId="1" gmtAdjustment="GMT-12:00" useDaylightTime="0" value="-12">(GMT-12:00) International Date Line West</option>
@@ -163,12 +164,12 @@ function kocf_show_signup_form_code($atts) { ?>
 			<span id="kocf-sp-time-zone-error" class="kocf-error-span"></span>
     </div>
     <div class="kocf-col-wrapper">
-      <label class="kocf-checkbox-label-wrapper">
+      <label class="kocf-labels" class="kocf-checkbox-label-wrapper">
         <input type="checkbox" class="kocf-checkbox" name="kocfSpNewsletter"> Would you like to be added to the Treeckosaurus Newsletter?
       </label>
     </div>
     <div class="kocf-col-wrapper">
-      <button id="koc-sp-form-submit">Sign-up</button>
+      <button class="kocf-buttons" id="kocf-sp-form-submit">Sign-up</button>
     </div>
 		<div class="kocf-col-wrapper errors-div" id="kocf-sp-error-wrapper">
 
