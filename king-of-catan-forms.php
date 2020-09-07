@@ -22,10 +22,16 @@ if (!defined('KOCF_RESULTS_TABLE' ))
 if (!defined('KOCF_VERSION_NUM'))
     define('KOCF_VERSION_NUM', '1.0.0');
 
-// Include kocf-functions.php, use require_once to stop the script if kocf-functions.php is not found
+// Include kocf-create-tables.php, use require_once to stop the script if kocf-create-tables.php is not found
 require_once plugin_dir_path(__FILE__) . 'includes/kocf-create-tables.php';
 
 register_activation_hook( __FILE__, 'kocf_create_tables' );
 
-// Include kocf-functions.php, use require_once to stop the script if kocf-functions.php is not found
-require_once plugin_dir_path(__FILE__) . 'includes/kocf-functions.php';
+// Include kocf-add-scripts.php, use require_once to stop the script if kocf-add-scripts.php is not found
+require_once plugin_dir_path(__FILE__) . 'includes/kocf-add-scripts.php';
+
+// Include kocf-add-shortcodes.php, use require_once to stop the script if kocf-add-shortcodes.php is not found
+require_once plugin_dir_path(__FILE__) . 'includes/kocf-add-shortcodes.php';
+
+// Include kocf-add-ajax-support.php, use require_once to stop the script if kocf-add-ajax-support.php is not found
+require_once plugin_dir_path(__FILE__) . 'includes/kocf-add-ajax-support.php';
