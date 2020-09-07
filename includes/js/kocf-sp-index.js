@@ -108,6 +108,7 @@
                     // show error message
                     $('#kocf-sp-error-wrapper').append( "<span class='kocf-show-error'> - " + response.data + "</span>" );
                     $('#kocf-sp-error-wrapper').addClass("kocf-show-error-wrapper");
+                    $('#koc-sp-form-submit').prop('disabled', false);
                   }
               } );
             }
@@ -222,6 +223,7 @@
                   // show error message
                   $('#kocf-rs-error-wrapper').append( "<span class='kocf-show-error'> - " + response.data + "</span>" );
                   $('#kocf-rs-error-wrapper').addClass("kocf-show-error-wrapper");
+                  $('#kocf-rs-submit').prop('disabled', false);
                 }
             } );
           }

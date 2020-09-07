@@ -50,9 +50,7 @@ function kocf_create_tables() {
 		time_stamp datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
     PRIMARY KEY  (result_id),
     FOREIGN KEY  (winner_user_id) REFERENCES $signup_table_name(user_id),
-		FOREIGN KEY  (player_two_user_id) REFERENCES $signup_table_name(user_id),
-		FOREIGN KEY  (player_three_user_id) REFERENCES $signup_table_name(user_id),
-		FOREIGN KEY  (player_four_user_id) REFERENCES $signup_table_name(user_id)
+		FOREIGN KEY  (player_two_user_id) REFERENCES $signup_table_name(user_id)
 	) $charset_collate;";
 
 	dbDelta( $sql );

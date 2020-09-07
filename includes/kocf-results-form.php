@@ -172,7 +172,7 @@ function kocf_show_results_form_code($atts) {
         <span id="kocf-rs-game-scenario-error" class="kocf-error-span"></span>
       </div>
       <div class="kocf-col-wrapper kocf-results-buttons-wrapper">
-        <button class="kocf-buttons" id="kocf-rs-submit">Next</button>
+        <button class="kocf-buttons" id="kocf-rs-submit">Submit Result</button>
       </div>
     </div>
     <div class="kocf-col-wrapper errors-div" id="kocf-rs-error-wrapper">
