@@ -49,8 +49,7 @@ function kocf_handle_ajax() {
         wp_send_json_error('Error submitting the form, pleasea try again');
       } else {
 				// send mail here
-				// $to = get_bloginfo("admin_email");
-				$to = "dsouzaalfred@gmail.com";
+				$to = get_bloginfo("admin_email");
 				$subject = "New Signup";
 				$message = $signup_data['kocfSpEmailAddress']." has signed up";
 				wp_mail( $to, $subject, $message );
@@ -82,11 +81,19 @@ function kocf_handle_ajax() {
 			if($add_results_record === false) {
         wp_send_json_error('Error submitting the form, pleasea try again');
       } else {
+				// signup table name
+	      $signup_table_name = $wpdb->prefix . KOCF_SIGNUP_TABLE;
+				$winner_user_id = $signup_data['kocfRsWinner'];
+				// construct query
+				$winner_query = "SELECT user_email_id FROM $signup_table_name WHERE user_id LIKE $winner_user_id";
+				// execute query
+				$results = $wpdb->get_results($winner_query);
+				// get the first item in array
+				$winner = $results[array_key_first($results)];
 				// send mail here
-				// $to = get_bloginfo("admin_email");
-				$to = "dsouzaalfred@gmail.com";
+				$to = get_bloginfo("admin_email");
 				$subject = "New result submitted ";
-				$message = $signup_data['kocfRsWinner']." is the winner";
+				$message = $winner->user_email_id." is the winner";
 				wp_mail( $to, $subject, $message );
 
         $result_success = array('message' => "Results submitted.");
