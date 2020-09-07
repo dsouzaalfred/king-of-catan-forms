@@ -41,7 +41,6 @@ function kocf_handle_ajax() {
 
       if($add_signup_record === false) {
         $signup_error = $wpdb->hide_errors();
-        // error_log(print_r($signup_error, true)); log to debug.log
         // check if the error is related to email ID
         $check_check = stripos($signup_error, 'user_email_id');
         if(strlen($check_check) >= 0) {
@@ -50,6 +49,12 @@ function kocf_handle_ajax() {
         wp_send_json_error('Error submitting the form, pleasea try again');
       } else {
 				// send mail here
+				// $to = get_bloginfo("admin_email");
+				$to = "dsouzaalfred@gmail.com";
+				$subject = "New Signup";
+				$message = $signup_data['kocfSpEmailAddress']." has signed up";
+				wp_mail( $to, $subject, $message );
+
         $signup_success = array('message' => "Sign up successful");
         wp_send_json_success( __( $signup_success, 'kocfSignup' ) );
       }
@@ -78,6 +83,12 @@ function kocf_handle_ajax() {
         wp_send_json_error('Error submitting the form, pleasea try again');
       } else {
 				// send mail here
+				// $to = get_bloginfo("admin_email");
+				$to = "dsouzaalfred@gmail.com";
+				$subject = "New result submitted ";
+				$message = $signup_data['kocfRsWinner']." is the winner";
+				wp_mail( $to, $subject, $message );
+
         $result_success = array('message' => "Results submitted.");
         wp_send_json_success( __( $result_success, 'kocfResults' ) );
       }
