@@ -28,14 +28,14 @@ function kocf_handle_ajax() {
       // handle sign-up request
       $add_signup_record = $wpdb->insert($signup_table_name, array(
          "user_email_id" => sanitize_email($signup_data['kocfSpEmailAddress']),
-         "catan_universe_name" => $signup_data['kocfSpCatanUniverseName'],
-         "colonist_name" => $signup_data['kocfSpColonistName'],
-         "catan_vr_name" => $signup_data['kocfSpCatanVrName'],
-         "discord_name" => $signup_data['kocfSpDiscordName'],
-         "game_modes" => $signup_data['kocfSpGameMode'],
-         "discord_server" => $signup_data['kocfSpDiscordServer'] ,
-         "user_time_zone" => $signup_data['kocfSpTimeZone'] ,
-         "add_to_newsletter" => $signup_data['kocfSpNewsletter'] ,
+         "catan_universe_name" => sanitize_text_field($signup_data['kocfSpCatanUniverseName']),
+         "colonist_name" => sanitize_text_field($signup_data['kocfSpColonistName']),
+         "catan_vr_name" => sanitize_text_field($signup_data['kocfSpCatanVrName']),
+         "discord_name" => sanitize_text_field($signup_data['kocfSpDiscordName']),
+         "game_modes" => sanitize_text_field($signup_data['kocfSpGameMode']),
+         "discord_server" => sanitize_text_field($signup_data['kocfSpDiscordServer']),
+         "user_time_zone" => sanitize_text_field($signup_data['kocfSpTimeZone']),
+         "add_to_newsletter" => sanitize_text_field($signup_data['kocfSpNewsletter']),
          "time_stamp" => current_time( 'mysql' ), // insert current timestamp
       ));
 
@@ -63,14 +63,14 @@ function kocf_handle_ajax() {
 			$results_table_name = $wpdb->prefix . KOCF_RESULTS_TABLE;
 
 			$add_results_record = $wpdb->insert($results_table_name, array(
-         "winner_user_id" => $signup_data['kocfRsWinner'],
-         "player_two_user_id" => $signup_data['kocfRsPlayer2'],
-         "player_three_user_id" => $signup_data['kocfRsPlayer3'],
-         "player_four_user_id" => $signup_data['kocfRsPlayer4'],
-         "other_players" => $signup_data['kocfRsOtherPlayers'],
-         "is_crown_game" => $signup_data['kocfRsGameForCrown'],
-         "game_mode" => $signup_data['kocfRsGameMode'] ,
-         "game_scenario" => $signup_data['kocfRsGameScenario'] ,
+         "winner_user_id" => sanitize_text_field($signup_data['kocfRsWinner']),
+         "player_two_user_id" => sanitize_text_field($signup_data['kocfRsPlayer2']),
+         "player_three_user_id" => sanitize_text_field($signup_data['kocfRsPlayer3']),
+         "player_four_user_id" => sanitize_text_field($signup_data['kocfRsPlayer4']),
+         "other_players" => sanitize_text_field($signup_data['kocfRsOtherPlayers']),
+         "is_crown_game" => sanitize_text_field($signup_data['kocfRsGameForCrown']),
+         "game_mode" => sanitize_text_field($signup_data['kocfRsGameMode']),
+         "game_scenario" => sanitize_text_field($signup_data['kocfRsGameScenario']),
          "time_stamp" => current_time( 'mysql' ), // insert current timestamp
       ));
 
