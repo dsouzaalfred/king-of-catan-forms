@@ -126,10 +126,34 @@
           $('#kocf-rs-error-wrapper').removeClass("kocf-show-error-wrapper");
           $('#kocf-rs-error-wrapper').html('');
 
-          var kocfRsWinner = $('select[name ="kocfRsWinner"]').val();
-          var kocfRsPlayer2 = $('select[name ="kocfRsPlayer2"]').val();
-          var kocfRsPlayer3 = $('select[name ="kocfRsPlayer3"]').val();
-          var kocfRsPlayer4 = $('select[name ="kocfRsPlayer4"]').val();
+          var kocfRsWinnerVal = $('select[name ="kocfRsWinner"]').val();
+          var kocfRsWinner;
+          if(kocfRsWinnerVal) {
+            var krwvSplitArr = kocfRsWinnerVal.split('kuid_');
+            kocfRsWinner = krwvSplitArr[krwvSplitArr.length - 1];
+          }
+
+          var kocfRsPlayer2Val = $('select[name ="kocfRsPlayer2"]').val();
+          var kocfRsPlayer2;
+          if(kocfRsPlayer2Val) {
+            var krp2vSplitArr = kocfRsPlayer2Val.split('kuid_');
+            kocfRsPlayer2 = krp2vSplitArr[krp2vSplitArr.length - 1];
+          }
+
+          var kocfRsPlayer3Val = $('select[name ="kocfRsPlayer3"]').val();
+          var kocfRsPlayer3;
+          if(kocfRsPlayer3Val) {
+            var krp3vSplitArr = kocfRsPlayer3Val.split('kuid_');
+            kocfRsPlayer3 = krp3vSplitArr[krp3vSplitArr.length - 1];
+          }
+
+          var kocfRsPlayer4Val = $('select[name ="kocfRsPlayer4"]').val();
+          var kocfRsPlayer4;
+          if(kocfRsPlayer4Val) {
+            var krp4vSplitArr = kocfRsPlayer4Val.split('kuid_');
+            kocfRsPlayer4 = krp4vSplitArr[krp4vSplitArr.length - 1];
+          }
+
           var kocfRsOtherPlayers = $('input[name="kocfRsOtherPlayers"]').val();
           var kocfRsGameForCrown = $('input[name="kocfRsGameForCrown"]:checked').val();
           var kocfRsGameMode = $('input[name="kocfRsGameMode"]:checked').val();
