@@ -1,0 +1,9 @@
+#kocf-signup-data-table {
+  border-spacing: 0;
+}
+
+#kocf-signup-data-table th, #kocf-signup-data-table td {
+  padding: 5px;
+  text-align: left;
+  border: 1px solid #ccc;
+}

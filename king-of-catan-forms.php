@@ -35,3 +35,6 @@ require_once plugin_dir_path(__FILE__) . 'includes/kocf-add-shortcodes.php';
 
 // Include kocf-add-ajax-support.php, use require_once to stop the script if kocf-add-ajax-support.php is not found
 require_once plugin_dir_path(__FILE__) . 'includes/kocf-add-ajax-support.php';
+
+// Include kocf-add-admin-menu.php, use require_once to stop the script if kocf-add-admin-menu.php is not found
+require_once plugin_dir_path(__FILE__) . 'includes/kocf-add-admin-menu.php';

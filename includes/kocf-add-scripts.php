@@ -14,3 +14,11 @@ function kocf_styles() {
     wp_localize_script( 'kocfh_script', 'kocfhAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));
 }
 add_action( 'wp_enqueue_scripts', 'kocf_styles' );
+
+// load admin styles & scripts
+function kocf_admin_styles() {
+    wp_enqueue_style( 'kocf-admin-styles',  plugin_dir_url( __FILE__ ) . 'css/kocf-admin-style.css' );
+    // wp_enqueue_script( 'kocfh_script', plugin_dir_url( __FILE__ ) . 'js/kocf-sp-index.js' , array('jquery'), null, true );
+
+}
+add_action( 'admin_enqueue_scripts', 'kocf_admin_styles' );
