@@ -11,7 +11,23 @@ function kocf_show_results_form_code($atts) {
 
   $signup_table_name = $wpdb->prefix . KOCF_SIGNUP_TABLE;
   $users = $wpdb->get_results( "SELECT user_id, catan_universe_name, colonist_name, catan_vr_name FROM $signup_table_name ORDER BY user_email_id" );
-
+	$players_list = array();
+	foreach ($users as $row){
+		$key_end =  "kuid_" . $row->user_id;
+		if($row->catan_universe_name) {
+			$key = $row->catan_universe_name . $key_end;
+			$players_list[$key] = $row->catan_universe_name;
+		}
+		if($row->colonist_name) {
+			$key = $row->colonist_name . $key_end;
+			$players_list[$key] = $row->colonist_name;
+		}
+		if($row->catan_vr_name) {
+			$key = $row->catan_vr_name . $key_end;
+			$players_list[$key] = $row->catan_vr_name;
+		}
+	}
+	asort($players_list);
   ?>
   <form name="kocf-results-form" id="kocf-results-form">
     <div id="kocf-results-form-step1">
@@ -19,17 +35,9 @@ function kocf_show_results_form_code($atts) {
         <label class="kocf-labels" for="kocfRsWinner">Who won the game?<sup class="kocf-required">*</sup></label>
         <select name="kocfRsWinner" class="kocf-select-box" required>
           <option value="">Select Winner</option>
-          <?php foreach ($users as $row){
-						if($row->catan_universe_name) { ?>
-							<option value="<?php echo $row->catan_universe_name . "kuid_" . $row->user_id ?>"><?php echo $row->catan_universe_name ?></option>
-						<?php }
-						if($row->colonist_name) { ?>
-							<option value="<?php echo $row->colonist_name . "kuid_" . $row->user_id ?>"><?php echo $row->colonist_name ?></option>
-						<?php }
-						if($row->catan_vr_name) { ?>
-							<option value="<?php echo $row->catan_vr_name . "kuid_" . $row->user_id ?>"><?php echo $row->catan_vr_name ?></option>
-						<?php }
-					} ?>
+          <?php foreach ($players_list as $key => $val) { ?>
+							<option value="<?php echo $key ?>"><?php echo $val ?></option>
+					<?php } ?>
         </select>
   			<span id="kocf-rs-winner-error" class="kocf-error-span"></span>
       </div>
@@ -41,17 +49,9 @@ function kocf_show_results_form_code($atts) {
         <label class="kocf-labels" for="kocfRsPlayer2">Player 2<sup class="kocf-required">*</sup></label>
         <select name="kocfRsPlayer2" class="kocf-select-box" required>
           <option value="">Select Player 2</option>
-					<?php foreach ($users as $row){
-						if($row->catan_universe_name) { ?>
-							<option value="<?php echo $row->catan_universe_name . "kuid_" . $row->user_id ?>"><?php echo $row->catan_universe_name ?></option>
-						<?php }
-						if($row->colonist_name) { ?>
-							<option value="<?php echo $row->colonist_name . "kuid_" . $row->user_id ?>"><?php echo $row->colonist_name ?></option>
-						<?php }
-						if($row->catan_vr_name) { ?>
-							<option value="<?php echo $row->catan_vr_name . "kuid_" . $row->user_id ?>"><?php echo $row->catan_vr_name ?></option>
-						<?php }
-					} ?>
+					<?php foreach ($players_list as $key => $val) { ?>
+							<option value="<?php echo $key ?>"><?php echo $val ?></option>
+					<?php } ?>
         </select>
   			<span id="kocf-rs-player2-error" class="kocf-error-span"></span>
       </div>
@@ -59,34 +59,18 @@ function kocf_show_results_form_code($atts) {
         <label class="kocf-labels" for="kocfRsPlayer3">Player 3</label>
         <select name="kocfRsPlayer3" class="kocf-select-box">
           <option value="">Select Player 3</option>
-					<?php foreach ($users as $row){
-						if($row->catan_universe_name) { ?>
-							<option value="<?php echo $row->catan_universe_name . "kuid_" . $row->user_id ?>"><?php echo $row->catan_universe_name ?></option>
-						<?php }
-						if($row->colonist_name) { ?>
-							<option value="<?php echo $row->colonist_name . "kuid_" . $row->user_id ?>"><?php echo $row->colonist_name ?></option>
-						<?php }
-						if($row->catan_vr_name) { ?>
-							<option value="<?php echo $row->catan_vr_name . "kuid_" . $row->user_id ?>"><?php echo $row->catan_vr_name ?></option>
-						<?php }
-					} ?>
+					<?php foreach ($players_list as $key => $val) { ?>
+							<option value="<?php echo $key ?>"><?php echo $val ?></option>
+					<?php } ?>
         </select>
       </div>
       <div class="kocf-col-wrapper">
         <label class="kocf-labels" for="kocfRsPlayer4">Player 4</label>
         <select name="kocfRsPlayer4" class="kocf-select-box">
           <option value="">Select Player 4</option>
-					<?php foreach ($users as $row){
-						if($row->catan_universe_name) { ?>
-							<option value="<?php echo $row->catan_universe_name . "kuid_" . $row->user_id ?>"><?php echo $row->catan_universe_name ?></option>
-						<?php }
-						if($row->colonist_name) { ?>
-							<option value="<?php echo $row->colonist_name . "kuid_" . $row->user_id ?>"><?php echo $row->colonist_name ?></option>
-						<?php }
-						if($row->catan_vr_name) { ?>
-							<option value="<?php echo $row->catan_vr_name . "kuid_" . $row->user_id ?>"><?php echo $row->catan_vr_name ?></option>
-						<?php }
-					} ?>
+					<?php foreach ($players_list as $key => $val) { ?>
+							<option value="<?php echo $key ?>"><?php echo $val ?></option>
+					<?php } ?>
         </select>
       </div>
       <div class="kocf-col-wrapper">
