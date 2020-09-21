@@ -27,7 +27,7 @@ function kocf_show_results_form_code($atts) {
 			$players_list[$key] = $row->catan_vr_name;
 		}
 	}
-	asort($players_list);
+	asort($players_list, SORT_STRING | SORT_FLAG_CASE | SORT_NATURAL);
   ?>
   <form name="kocf-results-form" id="kocf-results-form">
     <div id="kocf-results-form-step1">
