@@ -1,8 +1,8 @@
-#kocf-signup-data-table {
+#kocf-signup-data-table, #kocf-results-data-table {
   border-spacing: 0;
 }
 
-#kocf-signup-data-table th, #kocf-signup-data-table td {
+#kocf-signup-data-table th, #kocf-signup-data-table td, #kocf-results-data-table th, #kocf-results-data-table td {
   padding: 5px;
   text-align: left;
   border: 1px solid #ccc;

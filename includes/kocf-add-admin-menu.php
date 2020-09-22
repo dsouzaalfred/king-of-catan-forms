@@ -123,13 +123,59 @@ function kocf_render_signup_admin_menu() {
 }
 
 function kocf_render_results_admin_menu() {
-	// global $wpdb;
-	// $kocf_results_table_name = $wpdb->prefix . KOCF_RESULTS_TABLE;
-	// $kocf_results_query = "SELECT * FROM $kocf_results_table_name ORDER BY time_stamp JOIN $kocf_signup_table_name ON ";
-	// $kocf_results_query_results = $wpdb->get_results($kocf_results_query);
+	global $wpdb;
+	$kocf_results_table_name = $wpdb->prefix . KOCF_RESULTS_TABLE;
+	$kocf_results_query = "SELECT
+    r.result_id,
+    s.user_email_id AS winner,
+    s2.user_email_id AS player_two,
+    s3.user_email_id AS player_three,
+    s4.user_email_id AS player_four,
+    r.other_players,
+    r.is_crown_game,
+    r.game_mode,
+    r.game_scenario,
+    r.time_stamp
+FROM
+    wp_kocf_results r
+LEFT JOIN wp_kocf_signup s ON
+    s.user_id = r.winner_user_id
+LEFT JOIN wp_kocf_signup s2 ON
+    s2.user_id = r.player_two_user_id
+LEFT JOIN wp_kocf_signup s3 ON
+    s3.user_id = r.player_three_user_id
+LEFT JOIN wp_kocf_signup s4 ON
+    s4.user_id = r.player_four_user_id";
+	$kocf_results_query_results = $wpdb->get_results($kocf_results_query);
 	?>
 	<div class="kocf-menu-content-wrapper">
 		<h2>King Of Catan - Results data</h2>
+		<table id="kocf-results-data-table">
+			<tr>
+				<th>Winner</th>
+				<th>Player two</th>
+				<th>Player three</th>
+				<th>Player four</th>
+				<th>Other players</th>
+				<th>Game for the Crown?</th>
+				<th>Game mode</th>
+				<th>Scenario played</th>
+				<th>Time stamp</th>
+			</tr>
+			<?php foreach ($kocf_results_query_results as $row){ ?>
+				<tr>
+					<td><?php echo $row->winner ?></td>
+					<td><?php echo $row->player_two ?></td>
+					<td><?php echo $row->player_three ?></td>
+					<td><?php echo $row->player_four ?></td>
+					<td><?php echo $row->other_players ?></td>
+					<td><?php echo $row->is_crown_game ?></td>
+					<td><?php echo $row->game_mode ?></td>
+					<td><?php echo $row->game_scenario ?></td>
+					<td><?php echo $row->time_stamp ?></td>
+				</tr>
+			<?php } ?>
+		</table>
 	</div>
 	<?php
 }
