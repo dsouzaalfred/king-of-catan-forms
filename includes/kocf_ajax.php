@@ -49,10 +49,12 @@ function kocf_handle_ajax() {
         wp_send_json_error('Error submitting the form, pleasea try again');
       } else {
 				// send mail here
+				/*
 				$to = get_bloginfo("admin_email");
 				$subject = "New Signup";
 				$message = $signup_data['kocfSpEmailAddress']." has signed up";
 				wp_mail( $to, $subject, $message );
+				*/
 
         $signup_success = array('message' => "Sign up successful");
         wp_send_json_success( __( $signup_success, 'kocfSignup' ) );
@@ -69,9 +71,9 @@ function kocf_handle_ajax() {
 			$add_results_record = $wpdb->insert($results_table_name, array(
          "winner_user_id" => sanitize_text_field($signup_data['kocfRsWinner']),
          "player_two_user_id" => sanitize_text_field($signup_data['kocfRsPlayer2']),
-         "player_three_user_id" => sanitize_text_field($signup_data['kocfRsPlayer3']),
-         "player_four_user_id" => sanitize_text_field($signup_data['kocfRsPlayer4']),
-         "other_players" => sanitize_text_field($signup_data['kocfRsOtherPlayers']),
+         "player_three_user_id" => empty($signup_data['kocfRsPlayer3']) ? null : sanitize_text_field($signup_data['kocfRsPlayer3']),
+         "player_four_user_id" => empty($signup_data['kocfRsPlayer4']) ? null : sanitize_text_field($signup_data['kocfRsPlayer4']),
+         "other_players" => empty($signup_data['kocfRsOtherPlayers']) ? null : sanitize_text_field($signup_data['kocfRsOtherPlayers']),
          "is_crown_game" => sanitize_text_field($signup_data['kocfRsGameForCrown']),
          "game_mode" => sanitize_text_field($signup_data['kocfRsGameMode']),
          "game_scenario" => sanitize_text_field($signup_data['kocfRsGameScenario']),
@@ -82,7 +84,8 @@ function kocf_handle_ajax() {
         wp_send_json_error('Error submitting the form, pleasea try again');
       } else {
 				// signup table name
-	      $signup_table_name = $wpdb->prefix . KOCF_SIGNUP_TABLE;
+	      /*
+				$signup_table_name = $wpdb->prefix . KOCF_SIGNUP_TABLE;
 				$winner_user_id = $signup_data['kocfRsWinner'];
 				// construct query
 				$winner_query = "SELECT user_email_id FROM $signup_table_name WHERE user_id LIKE $winner_user_id";
@@ -95,6 +98,7 @@ function kocf_handle_ajax() {
 				$subject = "New result submitted ";
 				$message = $winner->user_email_id." is the winner";
 				wp_mail( $to, $subject, $message );
+				*/
 
         $result_success = array('message' => "Results submitted.");
         wp_send_json_success( __( $result_success, 'kocfResults' ) );

@@ -141,14 +141,15 @@
           }
 
           var kocfRsPlayer3Val = $('select[name ="kocfRsPlayer3"]').val();
-          var kocfRsPlayer3;
+          var kocfRsPlayer3 = null;
           if(kocfRsPlayer3Val) {
+            console.log({ kocfRsPlayer3Val });
             var krp3vSplitArr = kocfRsPlayer3Val.split('kuid_');
             kocfRsPlayer3 = krp3vSplitArr[krp3vSplitArr.length - 1];
           }
 
           var kocfRsPlayer4Val = $('select[name ="kocfRsPlayer4"]').val();
-          var kocfRsPlayer4;
+          var kocfRsPlayer4 = null;
           if(kocfRsPlayer4Val) {
             var krp4vSplitArr = kocfRsPlayer4Val.split('kuid_');
             kocfRsPlayer4 = krp4vSplitArr[krp4vSplitArr.length - 1];
@@ -169,7 +170,7 @@
           if(!kocfRsPlayer2) {
             $('#kocf-rs-player2-error').html('Please select Player 2.')
             $('#kocf-rs-player2-error').addClass('kocf-show-error');
-            kocfResultsStepOneError.push('Please select a winner.');
+            kocfResultsStepOneError.push('Please select Player 2.');
           }
           if(kocfRsWinner) {
             if(kocfRsWinner === kocfRsPlayer2) {
@@ -224,9 +225,9 @@
             var kocfResultsObj = {
               kocfRsWinner,
               kocfRsPlayer2,
-              kocfRsPlayer3: kocfRsPlayer3 ? kocfRsPlayer3 : '',
-              kocfRsPlayer4: kocfRsPlayer4 ? kocfRsPlayer4 : '',
-              kocfRsOtherPlayers: kocfRsOtherPlayers ? kocfRsOtherPlayers : '',
+              kocfRsPlayer3: kocfRsPlayer3,
+              kocfRsPlayer4: kocfRsPlayer4,
+              kocfRsOtherPlayers: kocfRsOtherPlayers ? kocfRsOtherPlayers : null,
               kocfRsGameForCrown,
               kocfRsGameMode,
               kocfRsGameScenario,
