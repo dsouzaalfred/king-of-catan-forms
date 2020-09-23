@@ -1,9 +1,5 @@
-#kocf-signup-data-table, #kocf-results-data-table {
-  border-spacing: 0;
-}
-
-#kocf-signup-data-table th, #kocf-signup-data-table td, #kocf-results-data-table th, #kocf-results-data-table td {
-  padding: 5px;
-  text-align: left;
-  border: 1px solid #ccc;
+.kocf-menu-content-wrapper h2 {
+  margin-top: 10px;
+  margin-bottom: 0;
+  color: #01050b;
 }

@@ -34,13 +34,13 @@ function kocf_admin_menu(){
 function render_kocf_admin_menu() {
 	?>
 		<div class="kocf-menu-content-wrapper">
-			<h2>King Of Catan - Form Data</h2>
+			<h2><?php esc_html_e( 'King Of Catan - Form Data' ); ?></h2>
 			<a href="<?php echo admin_url( 'admin.php?page=kocf-signup-admin-menu' ); ?>">
-				<?php esc_html_e( 'Signup data', 'autoclose' ); ?>
+				<?php esc_html_e( 'Signup data'); ?>
 			</a>
 			<br />
 			<a href="<?php echo admin_url( 'admin.php?page=kocf-results-admin-menu' ); ?>">
-				<?php esc_html_e( 'Results data', 'autoclose' ); ?>
+				<?php esc_html_e( 'Results data' ); ?>
 			</a>
 		</div>
 	<?php
@@ -83,99 +83,27 @@ function kocf_results_admin_sub_menu() {
 
 // render the sub menus
 function kocf_render_signup_admin_menu() {
-	global $wpdb;
-	$kocf_signup_table_name = $wpdb->prefix . KOCF_SIGNUP_TABLE;
-	$kocf_signup_query = "SELECT * FROM $kocf_signup_table_name ORDER BY time_stamp";
-	$kocf_signup_query_results = $wpdb->get_results($kocf_signup_query);
+	require_once plugin_dir_path(__FILE__) . './kocf-admin-signup-list.php';
+
+	$kocf_signup_list_table = new Kocf_Admin_Signup_List();
+	$kocf_signup_list_table->prepare_items();
 	?>
-		<div class="kocf-menu-content-wrapper">
+	<div class="kocf-menu-content-wrapper">
 			<h2>King Of Catan - Signup data</h2>
-			<table id="kocf-signup-data-table">
-				<tr>
-					<th>Email</th>
-					<th>Catan Universe Name</th>
-					<th>Colonist Name</th>
-					<th>Catan VR Name</th>
-					<th>Discord Name</th>
-					<th>Game Modes</th>
-					<th>Discord server</th>
-					<th>Add to newsletter</th>
-					<th>Time zone</th>
-					<th>Time stamp</th>
-				</tr>
-				<?php foreach ($kocf_signup_query_results as $row){ ?>
-					<tr>
-						<td><?php echo $row->user_email_id ?></td>
-						<td><?php echo $row->catan_universe_name ?></td>
-						<td><?php echo $row->colonist_name ?></td>
-						<td><?php echo $row->catan_vr_name ?></td>
-						<td><?php echo $row->discord_name ?></td>
-						<td><?php echo $row->game_modes ?></td>
-						<td><?php echo $row->discord_server ?></td>
-						<td><?php echo $row->add_to_newsletter == 0 ? 'No' : 'Yes' ?></td>
-						<td><?php echo $row->user_time_zone ?></td>
-						<td><?php echo $row->time_stamp ?></td>
-					</tr>
-				<?php } ?>
-			</table>
-		</div>
+	<?php $kocf_signup_list_table->display(); ?>
+	</div>
 	<?php
 }
 
 function kocf_render_results_admin_menu() {
-	global $wpdb;
-	$kocf_results_table_name = $wpdb->prefix . KOCF_RESULTS_TABLE;
-	$kocf_results_query = "SELECT
-    r.result_id,
-    s.user_email_id AS winner,
-    s2.user_email_id AS player_two,
-    s3.user_email_id AS player_three,
-    s4.user_email_id AS player_four,
-    r.other_players,
-    r.is_crown_game,
-    r.game_mode,
-    r.game_scenario,
-    r.time_stamp
-FROM
-    wp_kocf_results r
-LEFT JOIN wp_kocf_signup s ON
-    s.user_id = r.winner_user_id
-LEFT JOIN wp_kocf_signup s2 ON
-    s2.user_id = r.player_two_user_id
-LEFT JOIN wp_kocf_signup s3 ON
-    s3.user_id = r.player_three_user_id
-LEFT JOIN wp_kocf_signup s4 ON
-    s4.user_id = r.player_four_user_id";
-	$kocf_results_query_results = $wpdb->get_results($kocf_results_query);
+	require_once plugin_dir_path(__FILE__) . './kocf-admin-results-list.php';
+
+	$kocf_results_list_table = new Kocf_Admin_Results_List();
+	$kocf_results_list_table->prepare_items();
 	?>
 	<div class="kocf-menu-content-wrapper">
-		<h2>King Of Catan - Results data</h2>
-		<table id="kocf-results-data-table">
-			<tr>
-				<th>Winner</th>
-				<th>Player two</th>
-				<th>Player three</th>
-				<th>Player four</th>
-				<th>Other players</th>
-				<th>Game for the Crown?</th>
-				<th>Game mode</th>
-				<th>Scenario played</th>
-				<th>Time stamp</th>
-			</tr>
-			<?php foreach ($kocf_results_query_results as $row){ ?>
-				<tr>
-					<td><?php echo $row->winner ?></td>
-					<td><?php echo $row->player_two ?></td>
-					<td><?php echo $row->player_three ?></td>
-					<td><?php echo $row->player_four ?></td>
-					<td><?php echo $row->other_players ?></td>
-					<td><?php echo $row->is_crown_game ?></td>
-					<td><?php echo $row->game_mode ?></td>
-					<td><?php echo $row->game_scenario ?></td>
-					<td><?php echo $row->time_stamp ?></td>
-				</tr>
-			<?php } ?>
-		</table>
+			<h2>King Of Catan - Results data</h2>
+	<?php $kocf_results_list_table->display(); ?>
 	</div>
 	<?php
 }
